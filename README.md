@@ -97,18 +97,20 @@ Using these scripts, you can connect your web application to the MySQL container
 ## Directory Tree
 ```markdown
 php-apache-and-mysql-example/
-│
-├── db/ # Contains files for configuring the MySQL database
-│ └── mysql-init/ # Contains the init.sql and create-user.sh scripts for initializing the database
-│
-├── php/ # Contains files for configuring the PHP server
-│ ├── Dockerfile # Defines the Docker image for the PHP server
-│ └── html/ # Contains PHP files for serving content
-│   ├── get_db_example.php # Example PHP script for querying the database
-│   └── init_db_example.php # Example PHP script for initializing the database
-│
-├── docker-compose.yml # Defines the Docker services for running the PHP, Apache, and MySQL containers
-└── README.md # Contains documentation for the project
+├── db                      # Contains files for configuring the MySQL database
+│   └── mysql-init         # Contains initialization scripts for the MySQL database
+│       ├── example.init_1.sh  # Example script for creating a new MySQL user
+│       └── example.init_2.sql # Example script for initializing a new MySQL database
+├── docker-compose.yml      # Defines the Docker services for running the PHP, Apache, and MySQL containers
+├── LICENSE                 # Contains licensing information for the project
+├── php                     # Contains files for configuring the PHP server
+│   ├── dockerfile         # Defines the Docker image for the PHP server
+│   └── html               # Contains PHP files for serving content
+│       ├── get_db_example.php   # Example PHP script for querying the database
+│       ├── index.php       # The main index file for the web application
+│       ├── init_db_example.php  # Example PHP script for initializing the database
+│       └── init.sql        # Example SQL script for initializing the database schema
+└── README.md               # Contains documentation for the project
 ```
 
 ## Conclusion
