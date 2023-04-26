@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  php:
+    build: php
+    ports:
+      - "80:80"
+    networks:
+      - internal
+    volumes:
+      - ./php/html:/var/www/html/
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: myusername
+      DB_PASSWORD: mypassword
+      DB_NAME: book
+      DB_PORT: 3306
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-password
+      MYSQL_USER: myusername
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: book
+    networks:
+      - internal
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql-init:/docker-entrypoint-initdb.d
+      - ./db/mysql-volume:/var/lib/mysql
+
+networks:
+  internal:
+    driver: bridge
