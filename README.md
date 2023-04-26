@@ -124,9 +124,10 @@ Using these scripts, you can connect your web application to the MySQL container
 ```markdown
 PHP-MySQL-Docker-Compose-Example/
 ├── db                      # Contains files for configuring the MySQL database
-│   └── mysql-init         # Contains initialization scripts for the MySQL database
-│       ├── example.init_1.sh  # Example script for creating a new MySQL user
-│       └── example.init_2.sql # Example script for initializing a new MySQL database
+│   ├── mysql-init         # Contains initialization scripts for the MySQL database
+│   │   ├── example.init_1.sh  # Example script for creating a new MySQL user
+│   │   └── example.init_2.sql # Example script for initializing a new MySQL database
+│   └── mysql-volume       # A volume that persists the MySQL data
 ├── docker-compose.yml      # Defines the Docker services for running the PHP, Apache, and MySQL containers
 ├── .env                    # Contains environment variables for the Docker Compose file
 ├── LICENSE                 # Contains licensing information for the project
