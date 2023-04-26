@@ -82,7 +82,7 @@ The PHP application connects to the MySQL database using the following environme
 
 These environment variables can be set in the **docker-compose.yml** file or in a **.env** file in the project directory. It is recommended to use a **.env** file to store sensitive information like passwords and credentials. The **.env** file should be located in the project directory, and its contents should be in the format of `VARIABLE=value`. For example:
 
-```
+```env
 MYSQL_ROOT_PASSWORD=myrootpassword
 DB_USER=myusername
 DB_PASSWORD=mypassword
