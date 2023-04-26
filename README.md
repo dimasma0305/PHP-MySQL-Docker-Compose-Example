@@ -99,8 +99,7 @@ Using these scripts, you can connect your web application to the MySQL container
 php-apache-and-mysql-example/
 │
 ├── db/ # Contains files for configuring the MySQL database
-│ ├── mysql-init/ # Contains the init.sql and create-user.sh scripts for initializing the database
-│ └── Dockerfile # Defines the Docker image for the MySQL database
+│ └── mysql-init/ # Contains the init.sql and create-user.sh scripts for initializing the database
 │
 ├── php/ # Contains files for configuring the PHP server
 │ ├── Dockerfile # Defines the Docker image for the PHP server
