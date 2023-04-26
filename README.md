@@ -94,6 +94,24 @@ The values of the `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, and `DB_PORT` 
 
 Using these scripts, you can connect your web application to the MySQL container and perform database operations. If you modify any PHP files in the `./php/html` directory, the changes will be reflected in the container at `/var/www/html` and you will see real-time updates in your web application.
 
+## Directory Tree
+```markdown
+php-apache-and-mysql-example/
+│
+├── db/ # Contains files for configuring the MySQL database
+│ ├── mysql-init/ # Contains the init.sql and create-user.sh scripts for initializing the database
+│ └── Dockerfile # Defines the Docker image for the MySQL database
+│
+├── php/ # Contains files for configuring the PHP server
+│ ├── Dockerfile # Defines the Docker image for the PHP server
+│ └── html/ # Contains PHP files for serving content
+│   ├── get_db_example.php # Example PHP script for querying the database
+│   └── init_db_example.php # Example PHP script for initializing the database
+│
+├── docker-compose.yml # Defines the Docker services for running the PHP, Apache, and MySQL containers
+└── README.md # Contains documentation for the project
+```
+
 ## Conclusion
 
 This PHP-MySQL Docker Compose Example project provides a simple starting point for containerizing a PHP application with a MySQL database using Docker Compose. It can be used as a reference for building more complex web applications, or as a tool for learning how to use Docker Compose.
