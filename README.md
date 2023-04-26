@@ -12,13 +12,13 @@ This project provides a simple example of a web application built using PHP, Apa
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/php-apache-and-mysql-example.git
+   git clone https://github.com/dimasma0305/PHP-MySQL-Docker-Compose-Example.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd php-apache-and-mysql-example
+   cd PHP-MySQL-Docker-Compose-Example
    ```
 
 3. Start the containers:
@@ -96,7 +96,7 @@ Using these scripts, you can connect your web application to the MySQL container
 
 ## Directory Tree
 ```markdown
-php-apache-and-mysql-example/
+PHP-MySQL-Docker-Compose-Example/
 ├── db                      # Contains files for configuring the MySQL database
 │   └── mysql-init         # Contains initialization scripts for the MySQL database
 │       ├── example.init_1.sh  # Example script for creating a new MySQL user
