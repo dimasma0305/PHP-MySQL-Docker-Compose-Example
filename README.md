@@ -70,15 +70,6 @@ EOF
 
 You can put this script in `/db/mysql-init` directory and it will automatically run during the start of the database container. Make sure to define the required environment variables in the **docker-compose.yml** and **.env** files.
 
-Here's an example **.env** file:
-
-```env
-MYSQL_ROOT_PASSWORD=secretpassword
-DB_USER=myusername
-DB_PASSWORD=mypassword
-DB_NAME=book
-```
-
 ## Configuration
 
 The PHP application connects to the MySQL database using the following environment variables:
