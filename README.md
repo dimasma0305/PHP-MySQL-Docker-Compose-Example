@@ -31,7 +31,9 @@ This project provides a simple example of a web application built using PHP, Apa
 
 4. Open your web browser and go to `http://localhost:8080`. You should see a message that says "Welcome to PHP!".
 
-![](https://i.imgur.com/Dp7qu1Z.png)
+   ![](https://i.imgur.com/Dp7qu1Z.png)
+
+5. Modify the files in the `./php/html` directory to make changes to your web application. Any changes made to these files will be automatically reflected in the container at `/var/www/html`, allowing you to see real-time updates in your web application.
 
 6. To stop the containers, run the following command:
 
@@ -39,7 +41,7 @@ This project provides a simple example of a web application built using PHP, Apa
    docker-compose down
    ```
 
-   This command will stop and remove the containers. Note that any data stored in the `./php` and `./db` directories will still be available on your local machine, as these directories are mounted as volumes in the containers. 
+   This command will stop and remove the containers. Note that any data stored in the `./php` and `./db` directories will still be available on your local machine, as these directories are mounted as volumes in the containers.
 
 ## Initialization
 
