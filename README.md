@@ -31,7 +31,9 @@ This project provides a simple example of a web application built using PHP, Apa
 
 4. Open your web browser and go to `http://localhost:8080`. You should see a message that says "Welcome to PHP!".
 
-5. To stop the containers, run the following command:
+![](https://i.imgur.com/Dp7qu1Z.png)
+
+6. To stop the containers, run the following command:
 
    ```bash
    docker-compose down
@@ -41,7 +43,7 @@ This project provides a simple example of a web application built using PHP, Apa
 
 ## Initialization
 
-When the MySQL container starts up, it will execute the SQL script or shell script inside `/db/mysql-init/*`. The environment variables defined in the `docker-compose.yml` file will be used to create a new user with the username `myusername`, the password specified in `MYSQL_PASSWORD`, and a database named `book`.
+When the MySQL container starts up, it will execute the SQL script or shell script inside `/db/mysql-init/*`. The environment variables defined in the **docker-compose.yml** and **.env** file will be used to create a new user with the username `myusername`, the password specified in **MYSQL_PASSWORD**, and a database named **book**.
 
 Here's an example SQL script that creates a table named `books` with columns for `id`, `name`, and `price`:
 
@@ -66,31 +68,55 @@ FLUSH PRIVILEGES;
 EOF
 ```
 
-You can put this script in `/db/mysql-init` directory and it will automatically run during the start of the database container.
+You can put this script in `/db/mysql-init` directory and it will automatically run during the start of the database container. Make sure to define the required environment variables in the **docker-compose.yml** and **.env** files.
+
+Here's an example **.env** file:
+
+```env
+MYSQL_ROOT_PASSWORD=secretpassword
+DB_USER=myusername
+DB_PASSWORD=mypassword
+DB_NAME=book
+```
 
 ## Configuration
 
 The PHP application connects to the MySQL database using the following environment variables:
 
-- `DB_HOST`: The hostname of the MySQL container (`db` in this project).
-- `DB_USER`: The username of the MySQL user (`myusername` in this project).
-- `DB_PASSWORD`: The password of the MySQL user (`mypassword` in this project).
-- `DB_NAME`: The name of the MySQL database (`book` in this project).
-- `DB_PORT`: The port number of the MySQL container (`3306` in this project).
+- **DB_HOST**: The hostname of the MySQL container (**db** in this project).
+- **DB_USER**: The username of the MySQL user (**myusername** in this project).
+- **DB_PASSWORD**: The password of the MySQL user (**mypassword** in this project).
+- **DB_NAME**: The name of the MySQL database (**book** in this project).
+- **DB_PORT**: The port number of the MySQL container (**3306** in this project).
 
-These environment variables can be set in the `docker-compose.yml` file or in a `.env` file in the project directory.
+These environment variables can be set in the **docker-compose.yml** file or in a **.env** file in the project directory. It is recommended to use a **.env** file to store sensitive information like passwords and credentials. The **.env** file should be located in the project directory, and its contents should be in the format of `VARIABLE=value`. For example:
+
+```
+MYSQL_ROOT_PASSWORD=myrootpassword
+DB_USER=myusername
+DB_PASSWORD=mypassword
+DB_NAME=book
+```
+
+These values will be automatically loaded into the environment when **docker-compose** is executed.
+
+Sure, here's the revised explanation of the PHP example with bold text:
 
 ## Explanation of PHP Example
 
-In the `./php/html` directory, there are two PHP scripts provided as examples for connecting to and initializing the database. These scripts demonstrate how to use environment variables that are already set in the `docker-compose.yml` file to connect to the MySQL container from the PHP container.
-
-### `get_db_example.php`
-This script retrieves data from the `books` table in the `book` database and displays it in the browser. It first gets the database connection parameters from the environment variables and creates a connection to the database using the `mysqli_connect()` function. It then runs a SQL query to retrieve all records from the `books` table and displays the results in the browser.
+In the `./php/html` directory, there are two PHP scripts provided as examples for connecting to and initializing the database. These scripts demonstrate how to use environment variables that are already set in the **docker-compose.yml** file to connect to the MySQL container from the PHP container.
 
 ### `init_db_example.php`
-This script checks if the `books` table already exists in the `book` database. If it does not, it runs the `init.sql` script to initialize the database with the necessary table and data. Like the previous script, it also gets the database connection parameters from the environment variables and creates a connection to the database using the `mysqli_connect()` function. It then runs a SQL query to check if the `books` table exists and initializes the database if it does not.
+This script checks if the `books` table already exists in the `book` database. If it does not, it runs the `init.sql` script to initialize the database with the necessary table and data. Like the previous script, it also gets the database connection parameters from the environment variables and creates a connection to the database using the **mysqli_connect()** function. It then runs a SQL query to check if the `books` table exists and initializes the database if it does not.
 
-The values of the `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, and `DB_PORT` environment variables are used in both scripts to connect to the MySQL container. If you need to change the database connection settings, you can modify the values of these environment variables in the `docker-compose.yml` file.
+![](https://i.imgur.com/yPZB7Zo.png)
+
+### `get_db_example.php`
+This script retrieves data from the `books` table in the `book` database and displays it in the browser. It first gets the database connection parameters from the environment variables and creates a connection to the database using the **mysqli_connect()** function. It then runs a SQL query to retrieve all records from the `books` table and displays the results in the browser.
+
+![](https://i.imgur.com/d0PtDqa.png)
+
+The values of the **DB_HOST**, **DB_USER**, **DB_PASSWORD**, **DB_NAME**, and **DB_PORT** environment variables are used in both scripts to connect to the MySQL container. If you need to change the database connection settings, you can modify the values of these environment variables in the **docker-compose.yml** file.
 
 Using these scripts, you can connect your web application to the MySQL container and perform database operations. If you modify any PHP files in the `./php/html` directory, the changes will be reflected in the container at `/var/www/html` and you will see real-time updates in your web application.
 
@@ -102,6 +128,7 @@ PHP-MySQL-Docker-Compose-Example/
 │       ├── example.init_1.sh  # Example script for creating a new MySQL user
 │       └── example.init_2.sql # Example script for initializing a new MySQL database
 ├── docker-compose.yml      # Defines the Docker services for running the PHP, Apache, and MySQL containers
+├── .env                    # Contains environment variables for the Docker Compose file
 ├── LICENSE                 # Contains licensing information for the project
 ├── php                     # Contains files for configuring the PHP server
 │   ├── dockerfile         # Defines the Docker image for the PHP server

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Wellcome to PHP!</h1>
+    <h1>Welcome to PHP!</h1>
     <a href="/init_db_example.php">init_db_example.php</a>
     <br/>
     <a href="/get_db_example.php">get_db_example.php</a>
